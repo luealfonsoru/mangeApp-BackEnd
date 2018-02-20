@@ -1,5 +1,5 @@
 class UserProyectsController < ApplicationController
-	before_action :authenticate_user!, except: [ :index, :show]
+	before_action :authenticate_user!, except: [ :index, :show, :create]
 	before_action :set_user_proyect, only: [:show, :update, :destroy]
 
 	#GET /user_proyects
@@ -11,7 +11,7 @@ class UserProyectsController < ApplicationController
 
 	#POST /user_proyects
 	def create
-		@user_proyect = UserProyects.create!(user_proyect_params)
+		@user_proyect = UserProyect.create!(user_proyect_params)
 		json_response(@user_proyect, :created)
 	end
 
@@ -34,7 +34,7 @@ class UserProyectsController < ApplicationController
 	private
 
 	def user_proyect_params
-		params.permit(:tarea_id,:acta_id)
+		params.permit(:user_id,:proyect_id)
 	end
 
 	def set_user_proyect

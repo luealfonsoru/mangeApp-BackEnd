@@ -1,5 +1,5 @@
 class ProyectsController < ApplicationController
-	before_action :authenticate_user!, except: [ :index, :show]
+	before_action :authenticate_user!, except: [ :index, :show, :create]
 	before_action :set_proyect, only: [:show, :update, :destroy]
 
 	#GET /proyects
